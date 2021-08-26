@@ -10,7 +10,7 @@ This role was developed and tested on a Mint 20.2 system using [Molecule 3](http
 
 The Azure Site Recovery agent allows a Linux server to connect to a Windows process server for replication into the Azure cloud.
 
-The Azure Site Recovery agent is included here for convenience, but new versions are distributed with the ASR software installed on a Windows process server. The version of the agent **must match** the version of the ASR software on the process server.
+The Azure Site Recovery agent can be places in the "files" directory here for coconvenience, but new versions are distributed with the ASR software installed on a Windows process server. The version of the agent **must match** the version of the ASR software on the process server.
 
 Updated agents can be found in c:\%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository on a process server.
 
