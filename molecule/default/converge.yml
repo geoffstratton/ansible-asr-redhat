@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: Include abrt
+      include_role:
+        name: ansible-abrt-redhat

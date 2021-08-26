@@ -1,0 +1,42 @@
+# Install the Azure Site Recovery Agent
+# See the README for notes
+---
+- name: 'Create the setup dir'
+  file:
+    path: "{{ asr_setup_dir }}"
+    state: directory
+    owner: 'root'
+    group: 'root'
+    mode: '0755'
+  tags:
+    - asr_agent_install
+
+- name: 'Copy and unarchive the agent'
+  unarchive:
+    src: "{{ asr_agent }}"
+    dest: "{{ asr_setup_dir }}"
+    remote_src: no
+    group: 'root'
+    owner: 'root'
+    mode: '0755'
+  tags:
+    - asr_agent_install
+
+- name: 'Run the installer'
+  shell: |
+    set -o pipefail
+    cd "{{ asr_setup_dir }}"
+    ./install -d "{{ asr_install_dir }}" -r MS -v VmWare -q 2>&1
+  changed_when: no
+  tags:
+    - asr_agent_install
+
+- name: 'Configure the agent'
+  shell: |
+    set -o pipefail
+    echo "{{ asr_pw }}" > "{{ asr_pw_file }}"
+    "{{ asr_install_dir }}"/Vx/bin/UnifiedAgentConfigurator.sh -i "{{ asr_config_server }}" -P "{{ asr_pw_file }}" 2>&1
+    rm -f "{{ asr_pw_file }}"
+  changed_when: no
+  tags:
+    - asr_agent_install

@@ -1,0 +1,7 @@
+---
+asr_config_server: 'x.x.x.x'
+asr_setup_dir: '/opt/ASR'
+asr_install_dir: '/usr/local/ASR'
+asr_agent: 'Microsoft-ASR_UA_9.37.0.0_RHEL7-64_GA_03Sep2020_Release.tar.gz'
+asr_pw: 'n0bfXbloygZYNnel'
+asr_pw_file: '/var/passphrase.txt'

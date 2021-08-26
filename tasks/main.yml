@@ -1,0 +1,6 @@
+---
+- name: 'Install the ASR Agent'
+  include_tasks: 'asragent.yml'
+  when:
+    - ansible_virtualization_type != 'docker'
+    - ansible_distribution_major_version == 7
