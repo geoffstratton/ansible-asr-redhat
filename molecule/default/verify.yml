@@ -6,11 +6,3 @@
     - name: Gather package facts
       package_facts:
         manager: auto
-
-    - name: Verify that abrt packages are absent
-      assert:
-        that: "'{{ item }}' not in ansible_facts.packages"
-      with_items:
-        - abrtd
-        - abrt-ccpp
-        - abrt-oops
